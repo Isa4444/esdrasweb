@@ -26,30 +26,14 @@
   <p>You can find me at <a href="https://www.instagram.com/dras.8u/" target="_blank">my Instagram.
    Give it a follow.</a>.</p>
 
-  <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Meme Opener</title>
-  <style>
-    body {
-      background-color: #fffacd;
-      text-align: center;
-      font-family: Arial, sans-serif;
-      padding: 50px;
-    }
-    button {
-      font-size: 18px;
-      padding: 10px 20px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-  </style>
+  <title>Get a Meme</title>
 </head>
 <body>
 
-  <h1>Click for a Meme!</h1>
-  <button onclick="openMeme()">Open Meme in New Tab</button>
+  <button onclick="openMeme()">Get Meme</button>
 
   <script>
     function openMeme() {
@@ -58,17 +42,11 @@
         .then(data => {
           window.open(data.url, '_blank');
         })
-        .catch(error => {
-          console.error("Error getting meme:", error);
-          alert("Could not load meme. Try again!");
+        .catch(() => {
+          alert("Could not load meme.");
         });
     }
   </script>
 
 </body>
-</html>
-
-
-</body>
-
 </html>

@@ -5,32 +5,50 @@
   <title>EsdrasWeb</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: Arial, sans-serif;
-      margin: 40px;
-      background-color: #f5f5f5;
-      color: #333;
+      background: url('https://media.tenor.com/2uyENRmiUt0AAAAC/coding.gif') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
     }
+
+    .content {
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.6); /* dark background box */
+      max-width: 600px;
+      margin: 100px auto;
+      border-radius: 10px;
+      text-align: center;
+    }
+
     h1 {
-      color: #0066cc;
+      color: #00ccff;
     }
+
     a {
-      color: #ff6600;
+      color: #ff9900;
       text-decoration: none;
+    }
+
+    button {
+      margin-top: 20px;
+      font-size: 16px;
+      padding: 10px 20px;
+      cursor: pointer;
     }
   </style>
 </head>
-  
 <body>
-  <h1>Welcome to BuelvasWeb</h1>
-  <p>About me: Learning HTML, proud lover of Python, working to be a software engineer and I probably should be doing my homework right now.</p>
-  <p>You can find me at <a href="https://www.instagram.com/dras.8u/" target="_blank">my Instagram.
-   Give it a follow.</a>.</p>
 
-  <title>Get a Meme</title>
-</head>
-
-  <button onclick="openMeme()">Look at this meme, It'll make you feel better</button>
+  <div class="content">
+    <h1>Welcome to BuelvasWeb</h1>
+    <p>About me: Learning HTML, proud lover of Python, working to be a software engineer — and I probably should be doing my homework right now 😅.</p>
+    <p>You can find me at <a href="https://www.instagram.com/dras.8u/" target="_blank">my Instagram</a>. Give it a follow.</p>
+    <button onclick="openMeme()">Look at this meme, it'll make you feel better</button>
+  </div>
 
   <script>
     function openMeme() {

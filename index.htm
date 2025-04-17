@@ -30,19 +30,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Random Meme Generator</title>
+  <title>Meme Opener</title>
   <style>
     body {
-      background-color: #f0f8ff;
+      background-color: #fffacd;
       text-align: center;
       font-family: Arial, sans-serif;
       padding: 50px;
-    }
-    #memeContainer img {
-      max-width: 90%;
-      height: auto;
-      border-radius: 10px;
-      margin-top: 20px;
     }
     button {
       font-size: 18px;
@@ -54,27 +48,26 @@
 </head>
 <body>
 
-  <h1>Random Meme Generator</h1>
-  <div id="memeContainer">Click the button to get a meme!</div>
-  <button onclick="getMeme()">Get Meme</button>
+  <h1>Click for a Meme!</h1>
+  <button onclick="openMeme()">Open Meme in New Tab</button>
 
   <script>
-    function getMeme() {
+    function openMeme() {
       fetch('https://meme-api.com/gimme')
         .then(response => response.json())
         .then(data => {
-          const memeHTML = `<img src="${data.url}" alt="meme"><p>${data.title}</p>`;
-          document.getElementById('memeContainer').innerHTML = memeHTML;
+          window.open(data.url, '_blank');
         })
         .catch(error => {
           console.error("Error getting meme:", error);
-          document.getElementById('memeContainer').innerText = "Failed to load meme. Try again!";
+          alert("Could not load meme. Try again!");
         });
     }
   </script>
 
 </body>
 </html>
+
 
 </body>
 

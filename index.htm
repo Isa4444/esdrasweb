@@ -29,16 +29,33 @@
   <meta name="viewport" contents="width=device-width, initial-scale=1.0>
 
     <head>
-        <title>Joke Generator</title>
-    </head>
-    <body>
-    <body bgcolor="lightgreen"></body>
-       <h1>Random Joke Generator</h1> 
-       <div><span style="font-size:25px">
-       <div id="jokeDisplay"></div>
-       <button onclick= "newJoke()">New Joke</button>
-       <script scr="javascript.js"></script>
-    </body>
+    <meta charset="UTF-8">
+    <title>Joke Generator</title>
+    <style>
+        body {
+            background-color: lightgreen;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #jokeDisplay {
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Joke Generator</h1>
+    <div id="jokeDisplay">Click the button to get a joke!</div>
+    <button onclick="newJoke()">New Joke</button>
+
+    <script src="javascript.js"></script>
+</body>
 </div>
 </style>
 </body>

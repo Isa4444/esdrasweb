@@ -26,9 +26,55 @@
   <p>You can find me at <a href="https://www.instagram.com/dras.8u/" target="_blank">my Instagram.
    Give it a follow.</a>.</p>
 
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Meme Generator</title>
+  <style>
+    body {
+      background-color: #f0f8ff;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      padding: 50px;
+    }
+    #memeContainer img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
 
+  <h1>Random Meme Generator</h1>
+  <div id="memeContainer">Click the button to get a meme!</div>
+  <button onclick="getMeme()">Get Meme</button>
 
+  <script>
+    function getMeme() {
+      fetch('https://meme-api.com/gimme')
+        .then(response => response.json())
+        .then(data => {
+          const memeHTML = `<img src="${data.url}" alt="meme"><p>${data.title}</p>`;
+          document.getElementById('memeContainer').innerHTML = memeHTML;
+        })
+        .catch(error => {
+          console.error("Error getting meme:", error);
+          document.getElementById('memeContainer').innerText = "Failed to load meme. Try again!";
+        });
+    }
+  </script>
 
+</body>
+</html>
 
 </body>
 

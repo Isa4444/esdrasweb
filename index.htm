@@ -6,28 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" type="image/svg+xml">
 
+  <meta name="description" content="Esdras Buelvas – Future software engineer passionate about Python and web development.">
+  <meta name="keywords" content="Esdras, Buelvas, software engineer, HTML, Python, web development, portfolio">
+  <meta name="author" content="Esdras Buelvas">
+
+  <meta property="og:title" content="BuelvasWeb – Developer Portfolio">
+  <meta property="og:description" content="Welcome to my personal website where I share who I am and what I build.">
+  <meta property="og:image" content="https://i.imgur.com/nM3vD4I.png">
+  <meta property="og:url" content="https://yourcustomdomain.com">
+  <meta property="og:type" content="website">
+
   <style>
     :root {
-      --bg-dark: url('https://wallpaperaccess.com/full/1092440.jpg');
+      --bg-dark: url('https://images.unsplash.com/photo-1517202383675-eb0a6e27775f');
       --bg-light: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');
       --text-dark: #ffffff;
       --text-light: #222222;
       --box-dark: rgba(0, 0, 0, 0.7);
-      --box-light: rgba(255, 255, 255, 0.85);
+      --box-light: rgba(255, 255, 255, 0.9);
       --accent-dark: #00ccff;
       --accent-light: #0077cc;
       --link-dark: #ffcc00;
       --link-light: #cc6600;
     }
 
-    body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      transition: background 0.5s ease, color 0.3s ease;
       background: var(--bg-dark) no-repeat center center fixed;
       background-size: cover;
       color: var(--text-dark);
+      scroll-behavior: smooth;
+      transition: background 0.5s ease, color 0.3s ease;
     }
 
     body.light-mode {
@@ -36,54 +51,27 @@
       color: var(--text-light);
     }
 
-    .container {
-      max-width: 750px;
-      margin: 100px auto;
-      background-color: var(--box-dark);
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      text-align: center;
-      transition: background-color 0.4s ease;
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 1000;
     }
 
-    body.light-mode .container {
-      background-color: var(--box-light);
-    }
-
-    h1 {
-      color: var(--accent-dark);
-      margin-bottom: 20px;
-      font-size: 2.5rem;
-    }
-
-    body.light-mode h1 {
-      color: var(--accent-light);
-    }
-
-    p {
-      line-height: 1.8;
-      font-size: 1.1rem;
-    }
-
-    a {
-      color: var(--link-dark);
+    nav a {
+      margin: 0 15px;
+      color: #fff;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s;
     }
 
-    body.light-mode a {
-      color: var(--link-light);
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .logo {
-      width: 60px;
-      margin: 20px auto;
-      display: block;
+    nav a:hover {
+      color: var(--accent-dark);
     }
 
     .theme-toggle {
@@ -95,54 +83,202 @@
       border: none;
       cursor: pointer;
       color: inherit;
-      transition: transform 0.2s;
+      z-index: 1001;
     }
 
-    .theme-toggle:hover {
-      transform: scale(1.2);
+    .section {
+      max-width: 900px;
+      margin: 80px auto;
+      background-color: var(--box-dark);
+      padding: 40px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    body.light-mode .section {
+      background-color: var(--box-light);
+    }
+
+    h1, h2 {
+      color: var(--accent-dark);
+    }
+
+    body.light-mode h1, body.light-mode h2 {
+      color: var(--accent-light);
+    }
+
+    a {
+      color: var(--link-dark);
+    }
+
+    body.light-mode a {
+      color: var(--link-light);
+    }
+
+    .logo {
+      width: 60px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    .typing {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      font-style: italic;
+      color: #ccc;
+    }
+
+    .projects, .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background-color: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: left;
+      transition: background 0.3s;
+    }
+
+    .card:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+
+    .skill-bar {
+      background: #333;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .skill-level {
+      height: 10px;
+      background: var(--accent-dark);
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 6px;
+    }
+
+    form button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: var(--accent-dark);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      margin: 50px 0 20px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
 
-  <!-- Theme Toggle Button -->
   <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
     <span id="themeIcon">🌙</span>
   </button>
 
-  <!-- Logo -->
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Logo" class="logo">
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <!-- Main Content -->
-  <div class="container">
+  <section id="about" class="section">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Logo" class="logo">
     <h1>Welcome to BuelvasWeb</h1>
-    <p>
-      About me: I’m learning HTML, a proud lover of Python, and on my path to becoming a software engineer.
-      I probably should be doing my math homework right now 😅.
-    </p>
-    <p>
-      You can find me at <a href="https://www.instagram.com/dras.8u/" target="_blank">my Instagram</a>. Give it a follow.
-    </p>
-  </div>
+    <p>I’m Esdras — 16, passionate about web development and Python. I’m building my future, one project at a time (while probably avoiding math homework 😅).</p>
+    <div class="typing" id="typingText"></div>
+  </section>
+
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Personal Website</h3>
+        <p>Fully custom portfolio site with dark/light mode, responsive design, and modern UI.</p>
+      </div>
+      <div class="card">
+        <h3>Python Script</h3>
+        <p>Simple automation tool for file management. Practicing file I/O and CLI interactions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div>
+        <strong>HTML</strong>
+        <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
+      </div>
+      <div>
+        <strong>CSS</strong>
+        <div class="skill-bar"><div class="skill-level" style="width: 80%"></div></div>
+      </div>
+      <div>
+        <strong>Python</strong>
+        <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact Me</h2>
+    <form action="https://formspree.io/f/YOUR_ID" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Esdras Buelvas. All rights reserved.
+  </footer>
 
   <script>
-    const icon = document.getElementById('themeIcon');
-
-    function setTheme(mode) {
-      document.body.classList.toggle('light-mode', mode === 'light');
-      icon.textContent = mode === 'light' ? '🌙' : '☀️';
-      localStorage.setItem('theme', mode);
-    }
-
     function toggleTheme() {
-      const currentMode = document.body.classList.contains('light-mode') ? 'dark' : 'light';
-      setTheme(currentMode);
+      const body = document.body;
+      const icon = document.getElementById("themeIcon");
+      body.classList.toggle("light-mode");
+      const isLight = body.classList.contains("light-mode");
+      icon.textContent = isLight ? "🌙" : "☀️";
+      localStorage.setItem("theme", isLight ? "light" : "dark");
     }
 
-    // Load preference on page load
     window.onload = () => {
-      const savedTheme = localStorage.getItem('theme') || 'dark';
-      setTheme(savedTheme);
+      const savedTheme = localStorage.getItem("theme") || "dark";
+      if (savedTheme === "light") document.body.classList.add("light-mode");
+      document.getElementById("themeIcon").textContent = savedTheme === "light" ? "🌙" : "☀️";
+
+      const phrases = [
+        "I love building things with code.",
+        "Currently learning full-stack development.",
+        "Writing a book & dreaming big."
+      ];
+      let index = 0;
+      const typingText = document.getElementById("typingText");
+      function typeLine() {
+        typingText.textContent = phrases[index];
+        index = (index + 1) % phrases.length;
+        setTimeout(typeLine, 3000);
+      }
+      typeLine();
     };
   </script>
 

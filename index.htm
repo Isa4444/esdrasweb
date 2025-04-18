@@ -2,72 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>EsdrasWeb</title>
+  <title>BuelvasWeb</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" type="image/svg+xml">
+
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      font-family: Arial, sans-serif;
-      background: url('https://i.pinimg.com/originals/d7/b7/2c/d7b72cec7af2f9d6e6af7e1a1db4aae0.gif') no-repeat center center fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://wallpaperaccess.com/full/1092440.jpg') no-repeat center center fixed;
       background-size: cover;
       color: white;
     }
 
-    .content {
+    .logo {
+      width: 50px;
+      margin: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
       padding: 40px;
       background-color: rgba(0, 0, 0, 0.6);
-      max-width: 600px;
+      max-width: 700px;
       margin: 100px auto;
-      border-radius: 10px;
-      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
 
     h1 {
       color: #00ccff;
+      margin-bottom: 10px;
     }
 
     a {
-      color: #ff9900;
+      color: #ffcc00;
       text-decoration: none;
     }
 
-    button {
-      margin-top: 20px;
-      font-size: 16px;
-      padding: 10px 20px;
-      cursor: pointer;
+    a:hover {
+      text-decoration: underline;
+    }
+
+    p {
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
 
-  <div class="content">
+  <!-- Logo -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Logo" class="logo">
 
+  <div class="container">
     <h1>Welcome to BuelvasWeb</h1>
-    <p>About me: Learning HTML, proud lover of Python, working to be a software engineer and I probably should be doing my mathematics homework right now 😅.</p>
-    <p>You can find me at <a href="https://www.instagram.com/dras.8u/" target="_blank">my Instagram</a>. Give it a follow.</p>
-    <button onclick="openMeme()">Look at this meme, it'll make you feel better</button>
+    <p>
+      About me: I’m learning HTML, a proud lover of Python, and on my path to becoming a software engineer.  
+      I probably should be doing my math homework right now 😅.
+    </p>
+    <p>
+      You can find me at <a href="https://www.instagram.com/dras.8u/" target="_blank">my Instagram</a>. Give it a follow.
+    </p>
   </div>
-<head>
-  <meta charset="UTF-8">
-  <title>EsdrasWeb</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" type="image/svg+xml">
-</head>
-  <script>
-    function openMeme() {
-      fetch('https://meme-api.com/gimme')
-        .then(response => response.json())
-        .then(data => {
-          window.open(data.url, '_blank');
-        })
-        .catch(() => {
-          alert("Could not load meme.");
-        });
-    }
-  </script>
 
 </body>
 </html>

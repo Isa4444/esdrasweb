@@ -4,19 +4,33 @@
   <meta charset="UTF-8">
   <title>BuelvasWeb</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Favicon -->
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" type="image/svg+xml">
-
   <style>
+    :root {
+      --bg-color: url('https://wallpaperaccess.com/full/1092440.jpg');
+      --text-color: white;
+      --box-bg: rgba(0, 0, 0, 0.6);
+      --accent: #00ccff;
+      --link-color: #ffcc00;
+    }
+
+    body.light-mode {
+      --bg-color: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');
+      --text-color: #222;
+      --box-bg: rgba(255, 255, 255, 0.85);
+      --accent: #0077cc;
+      --link-color: #cc6600;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('https://wallpaperaccess.com/full/1092440.jpg') no-repeat center center fixed;
+      background: var(--bg-color) no-repeat center center fixed;
       background-size: cover;
-      color: white;
+      color: var(--text-color);
+      transition: background 0.5s ease, color 0.3s ease;
     }
 
     .logo {
@@ -30,20 +44,21 @@
       align-items: center;
       text-align: center;
       padding: 40px;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: var(--box-bg);
       max-width: 700px;
       margin: 100px auto;
       border-radius: 15px;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      transition: background-color 0.4s ease;
     }
 
     h1 {
-      color: #00ccff;
+      color: var(--accent);
       margin-bottom: 10px;
     }
 
     a {
-      color: #ffcc00;
+      color: var(--link-color);
       text-decoration: none;
     }
 
@@ -54,9 +69,30 @@
     p {
       line-height: 1.6;
     }
+
+    .toggle-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 16px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
   </style>
 </head>
 <body>
+
+  <!-- Light/Dark Toggle -->
+  <button class="toggle-btn" onclick="toggleMode()">Toggle Theme</button>
 
   <!-- Logo -->
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Logo" class="logo">
@@ -71,6 +107,12 @@
       You can find me at <a href="https://www.instagram.com/dras.8u/" target="_blank">my Instagram</a>. Give it a follow.
     </p>
   </div>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+    }
+  </script>
 
 </body>
 </html>

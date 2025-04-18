@@ -5,102 +5,119 @@
   <title>BuelvasWeb</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" type="image/svg+xml">
+
   <style>
     :root {
-      --bg-color: url('https://wallpaperaccess.com/full/1092440.jpg');
-      --text-color: white;
-      --box-bg: rgba(0, 0, 0, 0.6);
-      --accent: #00ccff;
-      --link-color: #ffcc00;
+      --bg-dark: url('https://wallpaperaccess.com/full/1092440.jpg');
+      --bg-light: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');
+      --text-dark: #ffffff;
+      --text-light: #222222;
+      --box-dark: rgba(0, 0, 0, 0.7);
+      --box-light: rgba(255, 255, 255, 0.85);
+      --accent-dark: #00ccff;
+      --accent-light: #0077cc;
+      --link-dark: #ffcc00;
+      --link-light: #cc6600;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background 0.5s ease, color 0.3s ease;
+      background: var(--bg-dark) no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-dark);
     }
 
     body.light-mode {
-      --bg-color: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');
-      --text-color: #222;
-      --box-bg: rgba(255, 255, 255, 0.85);
-      --accent: #0077cc;
-      --link-color: #cc6600;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--bg-color) no-repeat center center fixed;
+      background: var(--bg-light) no-repeat center center fixed;
       background-size: cover;
-      color: var(--text-color);
-      transition: background 0.5s ease, color 0.3s ease;
-    }
-
-    .logo {
-      width: 50px;
-      margin: 20px;
+      color: var(--text-light);
     }
 
     .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 40px;
-      background-color: var(--box-bg);
-      max-width: 700px;
+      max-width: 750px;
       margin: 100px auto;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      background-color: var(--box-dark);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      text-align: center;
       transition: background-color 0.4s ease;
     }
 
+    body.light-mode .container {
+      background-color: var(--box-light);
+    }
+
     h1 {
-      color: var(--accent);
-      margin-bottom: 10px;
+      color: var(--accent-dark);
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+    }
+
+    body.light-mode h1 {
+      color: var(--accent-light);
+    }
+
+    p {
+      line-height: 1.8;
+      font-size: 1.1rem;
     }
 
     a {
-      color: var(--link-color);
+      color: var(--link-dark);
       text-decoration: none;
+      font-weight: bold;
+    }
+
+    body.light-mode a {
+      color: var(--link-light);
     }
 
     a:hover {
       text-decoration: underline;
     }
 
-    p {
-      line-height: 1.6;
+    .logo {
+      width: 60px;
+      margin: 20px auto;
+      display: block;
     }
 
-    .toggle-btn {
+    .theme-toggle {
       position: fixed;
       top: 20px;
       right: 20px;
-      padding: 10px 16px;
-      background-color: rgba(255, 255, 255, 0.2);
-      border: 1px solid #ccc;
-      border-radius: 20px;
+      font-size: 1.4rem;
+      background: none;
+      border: none;
       cursor: pointer;
-      font-size: 14px;
-      color: var(--text-color);
-      transition: background-color 0.3s ease, color 0.3s ease;
+      color: inherit;
+      transition: transform 0.2s;
     }
 
-    .toggle-btn:hover {
-      background-color: rgba(255, 255, 255, 0.3);
+    .theme-toggle:hover {
+      transform: scale(1.2);
     }
   </style>
 </head>
 <body>
 
-  <!-- Light/Dark Toggle -->
-  <button class="toggle-btn" onclick="toggleMode()">Toggle Theme</button>
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
+    <span id="themeIcon">🌙</span>
+  </button>
 
   <!-- Logo -->
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Logo" class="logo">
 
+  <!-- Main Content -->
   <div class="container">
     <h1>Welcome to BuelvasWeb</h1>
     <p>
-      About me: I’m learning HTML, a proud lover of Python, and on my path to becoming a software engineer.  
+      About me: I’m learning HTML, a proud lover of Python, and on my path to becoming a software engineer.
       I probably should be doing my math homework right now 😅.
     </p>
     <p>
@@ -109,9 +126,24 @@
   </div>
 
   <script>
-    function toggleMode() {
-      document.body.classList.toggle('light-mode');
+    const icon = document.getElementById('themeIcon');
+
+    function setTheme(mode) {
+      document.body.classList.toggle('light-mode', mode === 'light');
+      icon.textContent = mode === 'light' ? '🌙' : '☀️';
+      localStorage.setItem('theme', mode);
     }
+
+    function toggleTheme() {
+      const currentMode = document.body.classList.contains('light-mode') ? 'dark' : 'light';
+      setTheme(currentMode);
+    }
+
+    // Load preference on page load
+    window.onload = () => {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      setTheme(savedTheme);
+    };
   </script>
 
 </body>

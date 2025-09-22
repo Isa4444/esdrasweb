@@ -4,6 +4,7 @@
   <meta name="referrer" content="origin">
   <meta charset="UTF-8" />
   <title>BuelvasWeb</title>
+  <link rel="canonical" href="https://buelvasweb.com">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" type="image/svg+xml" />
 
@@ -17,6 +18,45 @@
   <meta property="og:url" content="https://buelvasweb.com">
   <meta property="og:type" content="website">
 
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BuelvasWeb – Developer Portfolio">
+  <meta name="twitter:description" content="Welcome to my personal website where I share who I am and what I build.">
+  <meta name="twitter:image" content="https://visualstudiomagazine.com/-/media/ECG/visualstudiomagazine/Images/introimages/12122012MultiThreadGlobalization.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Esdras Buelvas",
+    "alternateName":"BuelvasWeb",
+    "url":"https://buelvasweb.com",
+    "image":"https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+    "sameAs":[
+      "https://github.com/EsdrasBuelvas",
+      "https://medium.com/@EsdrasBuelvas",
+      "https://www.instagram.com/EsdrasBuelvas"
+    ],
+    "jobTitle":"Student, Developer, Writer",
+    "knowsAbout":["Software Engineering","Philosophy","Mathematics"],
+    "nationality":"US",
+    "gender":"Male"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"BuelvasWeb",
+    "url":"https://buelvasweb.com",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://buelvasweb.com/?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
+
   <style>
     :root{
       --bg-dark: url('https://i.imgur.com/pUrhAdr.png');
@@ -29,17 +69,13 @@
       --accent-light: #0077cc;
       --link-dark: #ffcc00;
       --link-light: #cc6600;
-
-      /* particle colors (high contrast to verify) */
       --dot:#ffffff;
       --line:#ffffff;
     }
     body.light-mode{
-      /* darker lines on light bg */
       --dot:#2b3a73;
       --line:#1f2b58;
     }
-
     *{margin:0;padding:0;box-sizing:border-box;}
     html,body{
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -55,37 +91,29 @@
       background-size: cover;
       color: var(--text-light);
     }
-
-    /* PARTICLE LAYER (above bg, behind content) */
     #particles-wrap{
       position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      /* subtle vignette to lift contrast on bright images */
       background: radial-gradient(1200px 800px at 70% 20%,
         rgba(9,13,27,0.35) 0%, rgba(6,9,18,0.25) 45%, rgba(0,0,0,0.15) 100%);
     }
     #particles{width:100%;height:100%;display:block;}
-
     nav{
       position: sticky; top: 0; width: 100%;
       background-color: rgba(0,0,0,0.8);
       display: flex; justify-content: center;
       padding: 1rem; z-index: 1000;
     }
-    /* ensure content sits above particles */
     nav, .section { position: relative; z-index: 1; }
-
     nav a{
       margin: 0 15px; color: #fff; text-decoration: none;
       font-weight: bold; transition: color 0.3s;
     }
     nav a:hover{ color: var(--accent-dark); }
-
     .theme-toggle{
       position: fixed; top: 20px; right: 20px;
       font-size: 1.4rem; background: none; border: none;
       cursor: pointer; color: inherit; z-index: 1001;
     }
-
     .section{
       max-width: 900px; margin: 80px auto;
       background-color: var(--box-dark);
@@ -93,17 +121,12 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.4);
     }
     body.light-mode .section{ background-color: var(--box-light); }
-
     h1,h2{ color: var(--accent-dark); }
     body.light-mode h1, body.light-mode h2{ color: var(--accent-light); }
-
     a{ color: var(--link-dark); }
     body.light-mode a{ color: var(--link-light); }
-
     .logo{ width: 60px; display:block; margin:0 auto 20px; }
-
     .typing{ font-size:1.2rem; margin-top:20px; font-style:italic; color:#ccc; }
-
     .projects,.skills{
       display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
       gap:20px; margin-top:20px;
@@ -113,10 +136,8 @@
       padding: 20px; border-radius: 12px; text-align: left; transition: background 0.3s;
     }
     .card:hover{ background-color: rgba(255,255,255,0.2); }
-
     .skill-bar{ background:#333; border-radius:8px; overflow:hidden; margin-top:10px; }
     .skill-level{ height:10px; background: var(--accent-dark); }
-
     form input, form textarea{
       width:100%; padding:10px; margin-top:10px; border:none; border-radius:6px;
     }
@@ -124,12 +145,10 @@
       margin-top:10px; padding:10px 20px; background: var(--accent-dark);
       color:#fff; border:none; border-radius:6px; cursor:pointer;
     }
-
     footer{ text-align:center; margin:50px 0 20px; color:#aaa; }
   </style>
 </head>
 <body>
-
   <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
     <span id="themeIcon">🌙</span>
   </button>
@@ -141,7 +160,6 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  
   <div id="particles-wrap"><canvas id="particles"></canvas></div>
 
   <section id="about" class="section">
@@ -174,7 +192,7 @@
     <div class="projects">
       <div class="card">
         <h3>Lucien</h3>
-        <p>Personal AI named Lucien lord of Starugerth. In progress...</p>
+        <p>Personal AI named Lucien, lord of Starugerth. In progress...</p>
       </div>
       <div class="card">
         <h3>Book</h3>
@@ -192,7 +210,6 @@
       <button type="submit">Send</button>
     </form>
   </section>
-
 
   <footer>&copy; 2025 Esdras Buelvas. All rights reserved.</footer>
 
@@ -226,31 +243,13 @@
       typeLine();
     };
 
-
     (() => {
-      console.log('[Particles] boot');
       const canvas = document.getElementById('particles');
-      if (!canvas) { console.warn('No #particles canvas found'); return; }
+      if (!canvas) return;
       const ctx = canvas.getContext('2d');
-
-      const cfg = {
-        count: 90,
-        countMobile: 55,
-        maxSpeed: 0.45,
-        linkDist: 130,
-        lineAlpha: 0.5,
-        dotMin: 1.2,
-        dotMax: 2.4
-      };
-
+      const cfg = { count: 90, countMobile: 55, maxSpeed: 0.45, linkDist: 130, lineAlpha: 0.5, dotMin: 1.2, dotMax: 2.4 };
       const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduce) { 
-        cfg.maxSpeed = 0.25;
-        cfg.linkDist = 110;
-        cfg.count = 70;
-        cfg.countMobile = 40;
-      }
-
+      if (reduce) { cfg.maxSpeed = 0.25; cfg.linkDist = 110; cfg.count = 70; cfg.countMobile = 40; }
       let parts = [], mouse = { x:null, y:null };
 
       function resize(){
@@ -330,14 +329,8 @@
       });
       canvas.addEventListener('mouseleave', ()=>{ mouse.x = mouse.y = null; });
 
-      document.addEventListener('visibilitychange', ()=>{
-      });
-
       init();
     })();
   </script>
 </body>
 </html>
-
-
-
